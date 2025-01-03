@@ -1,0 +1,188 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "adfdatachronicles"
+		},
+		"ls_adlsdatachronicles_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ls_adlsdatachronicles'"
+		},
+		"ls_asql_db_parameterised_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'ls_asql_db_parameterised'"
+		},
+		"ls_asqlserverdatachronicles_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'ls_asqlserverdatachronicles'"
+		},
+		"ls_sftp_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'ls_sftp'"
+		},
+		"ls_adlsdatachronicles_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://stgdatachronicles2025.dfs.core.windows.net/"
+		},
+		"ls_akv_datachronicles_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://kvdatachronicle.vault.azure.net/"
+		},
+		"ls_asql_db_keyvault_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "asqldbserverdatachronicles.database.windows.net"
+		},
+		"ls_asql_db_keyvault_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "adbdatachronicles25"
+		},
+		"ls_asql_db_keyvault_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "azureroot"
+		},
+		"ls_asql_db_parameterised_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "asqldbserverdatachronicles.database.windows.net"
+		},
+		"ls_asql_db_parameterised_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "adbdatachronicles25"
+		},
+		"ls_asql_db_parameterised_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "@{linkedService().username}"
+		},
+		"ls_asqlserverdatachronicles_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "asqldbserverdatachronicles.database.windows.net"
+		},
+		"ls_asqlserverdatachronicles_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "adbdatachronicles25"
+		},
+		"ls_asqlserverdatachronicles_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "azureroot"
+		},
+		"ls_rest_service_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://restcountries.com/v3.1/name"
+		},
+		"ls_sftp_properties_typeProperties_host": {
+			"type": "string",
+			"defaultValue": "test.rebex.net"
+		},
+		"ls_sftp_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "demo"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "adfdatachronicles_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"ls_adlsdatachronicles_accountKey": {
+						"value": "[parameters('ls_adlsdatachronicles_accountKey')]"
+					},
+					"ls_asql_db_parameterised_password": {
+						"value": "[parameters('ls_asql_db_parameterised_password')]"
+					},
+					"ls_asqlserverdatachronicles_password": {
+						"value": "[parameters('ls_asqlserverdatachronicles_password')]"
+					},
+					"ls_sftp_password": {
+						"value": "[parameters('ls_sftp_password')]"
+					},
+					"ls_adlsdatachronicles_properties_typeProperties_url": {
+						"value": "[parameters('ls_adlsdatachronicles_properties_typeProperties_url')]"
+					},
+					"ls_akv_datachronicles_properties_typeProperties_baseUrl": {
+						"value": "[parameters('ls_akv_datachronicles_properties_typeProperties_baseUrl')]"
+					},
+					"ls_asql_db_parameterised_properties_typeProperties_server": {
+						"value": "[parameters('ls_asql_db_parameterised_properties_typeProperties_server')]"
+					},
+					"ls_asql_db_parameterised_properties_typeProperties_database": {
+						"value": "[parameters('ls_asql_db_parameterised_properties_typeProperties_database')]"
+					},
+					"ls_asql_db_parameterised_properties_typeProperties_userName": {
+						"value": "[parameters('ls_asql_db_parameterised_properties_typeProperties_userName')]"
+					},
+					"ls_asqlserverdatachronicles_properties_typeProperties_server": {
+						"value": "[parameters('ls_asqlserverdatachronicles_properties_typeProperties_server')]"
+					},
+					"ls_asqlserverdatachronicles_properties_typeProperties_database": {
+						"value": "[parameters('ls_asqlserverdatachronicles_properties_typeProperties_database')]"
+					},
+					"ls_asqlserverdatachronicles_properties_typeProperties_userName": {
+						"value": "[parameters('ls_asqlserverdatachronicles_properties_typeProperties_userName')]"
+					},
+					"ls_rest_service_properties_typeProperties_url": {
+						"value": "[parameters('ls_rest_service_properties_typeProperties_url')]"
+					},
+					"ls_sftp_properties_typeProperties_host": {
+						"value": "[parameters('ls_sftp_properties_typeProperties_host')]"
+					},
+					"ls_sftp_properties_typeProperties_userName": {
+						"value": "[parameters('ls_sftp_properties_typeProperties_userName')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "adfdatachronicles_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"ls_asql_db_keyvault_properties_typeProperties_server": {
+						"value": "[parameters('ls_asql_db_keyvault_properties_typeProperties_server')]"
+					},
+					"ls_asql_db_keyvault_properties_typeProperties_database": {
+						"value": "[parameters('ls_asql_db_keyvault_properties_typeProperties_database')]"
+					},
+					"ls_asql_db_keyvault_properties_typeProperties_userName": {
+						"value": "[parameters('ls_asql_db_keyvault_properties_typeProperties_userName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'adfdatachronicles_ArmTemplate_0')]"
+			]
+		}
+	]
+}

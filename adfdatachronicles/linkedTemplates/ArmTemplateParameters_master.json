@@ -1,0 +1,69 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adfdatachronicles"
+		},
+		"ls_adlsdatachronicles_accountKey": {
+			"value": ""
+		},
+		"ls_asql_db_parameterised_password": {
+			"value": ""
+		},
+		"ls_asqlserverdatachronicles_password": {
+			"value": ""
+		},
+		"ls_sftp_password": {
+			"value": ""
+		},
+		"ls_adlsdatachronicles_properties_typeProperties_url": {
+			"value": "https://stgdatachronicles2025.dfs.core.windows.net/"
+		},
+		"ls_akv_datachronicles_properties_typeProperties_baseUrl": {
+			"value": "https://kvdatachronicle.vault.azure.net/"
+		},
+		"ls_asql_db_keyvault_properties_typeProperties_server": {
+			"value": "asqldbserverdatachronicles.database.windows.net"
+		},
+		"ls_asql_db_keyvault_properties_typeProperties_database": {
+			"value": "adbdatachronicles25"
+		},
+		"ls_asql_db_keyvault_properties_typeProperties_userName": {
+			"value": "azureroot"
+		},
+		"ls_asql_db_parameterised_properties_typeProperties_server": {
+			"value": "asqldbserverdatachronicles.database.windows.net"
+		},
+		"ls_asql_db_parameterised_properties_typeProperties_database": {
+			"value": "adbdatachronicles25"
+		},
+		"ls_asql_db_parameterised_properties_typeProperties_userName": {
+			"value": "@{linkedService().username}"
+		},
+		"ls_asqlserverdatachronicles_properties_typeProperties_server": {
+			"value": "asqldbserverdatachronicles.database.windows.net"
+		},
+		"ls_asqlserverdatachronicles_properties_typeProperties_database": {
+			"value": "adbdatachronicles25"
+		},
+		"ls_asqlserverdatachronicles_properties_typeProperties_userName": {
+			"value": "azureroot"
+		},
+		"ls_rest_service_properties_typeProperties_url": {
+			"value": "https://restcountries.com/v3.1/name"
+		},
+		"ls_sftp_properties_typeProperties_host": {
+			"value": "test.rebex.net"
+		},
+		"ls_sftp_properties_typeProperties_userName": {
+			"value": "demo"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
