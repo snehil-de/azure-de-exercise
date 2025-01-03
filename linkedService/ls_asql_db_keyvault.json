@@ -1,0 +1,24 @@
+{
+	"name": "ls_asql_db_keyvault",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"server": "asqldbserverdatachronicles.database.windows.net",
+			"database": "adbdatachronicles25",
+			"encrypt": "mandatory",
+			"trustServerCertificate": false,
+			"authenticationType": "SQL",
+			"userName": "azureroot",
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "ls_akv_datachronicles",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "asqldbpassword"
+			}
+		}
+	}
+}

@@ -1,0 +1,17 @@
+{
+	"name": "adfdatachronicles",
+	"properties": {
+		"globalParameters": {
+			"envName": {
+				"type": "string",
+				"value": "dev"
+			}
+		}
+	},
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "d6713dfc-66e8-4c55-aaf7-c41528c52014",
+		"tenantId": "d2c3666b-33ab-491a-8599-c619861eb4b0"
+	}
+}

@@ -1,0 +1,66 @@
+{
+	"name": "dataflow_trial",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ds_adls_customer",
+						"type": "DatasetReference"
+					},
+					"name": "dataingestcustomer"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "ds_dataflow_trial",
+						"type": "DatasetReference"
+					},
+					"name": "sinkcustomer"
+				}
+			],
+			"transformations": [
+				{
+					"name": "filtermiddlename"
+				},
+				{
+					"name": "aggregateByTitle"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          CustomerID as string,",
+				"          NameStyle as string,",
+				"          Title as string,",
+				"          FirstName as string,",
+				"          MiddleName as string,",
+				"          LastName as string,",
+				"          Suffix as string,",
+				"          CompanyName as string,",
+				"          SalesPerson as string,",
+				"          EmailAddress as string,",
+				"          Phone as string,",
+				"          PasswordHash as string,",
+				"          PasswordSalt as string,",
+				"          rowguid as string,",
+				"          ModifiedDate as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> dataingestcustomer",
+				"dataingestcustomer filter(!isNull(MiddleName)) ~> filtermiddlename",
+				"filtermiddlename aggregate(groupBy(Title),",
+				"     MiddleName = count(Title)) ~> aggregateByTitle",
+				"aggregateByTitle sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sinkcustomer"
+			]
+		}
+	}
+}

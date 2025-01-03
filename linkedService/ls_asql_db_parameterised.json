@@ -1,0 +1,22 @@
+{
+	"name": "ls_asql_db_parameterised",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"parameters": {
+			"username": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"server": "asqldbserverdatachronicles.database.windows.net",
+			"database": "adbdatachronicles25",
+			"encrypt": "mandatory",
+			"trustServerCertificate": false,
+			"authenticationType": "SQL",
+			"userName": "@{linkedService().username}",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDU2RjQ2RDU3LTUzQTYtNDQ2MS04RkRFLUQxRDYyMDVEQzQ0Nl8xOGM0OGZmNi1kMWVkLTRkODYtYjFmZS04YjQwZTUyOTk3MTUiDQp9"
+		}
+	}
+}

@@ -1,0 +1,32 @@
+{
+	"name": "ds_asqldb_generic",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_asqlserverdatachronicles",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"schemaName": {
+				"type": "string",
+				"defaultValue": "saleslt"
+			},
+			"tableName": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": {
+				"value": "@dataset().schemaName",
+				"type": "Expression"
+			},
+			"table": {
+				"value": "@dataset().tableName",
+				"type": "Expression"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
